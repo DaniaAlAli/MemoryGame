@@ -25,19 +25,53 @@ const PhotoList = () => {
       photos[randomIndex] = tempValue;
     }
   };
-  //shuffle(photos);
+  shuffle(photos);
 
   const [_photos, setPhotos] = useState(photos);
+
+  // const [flipped, setFlipped] = useState([]);
+  // const [disable, setDisabled] = useState(false);
+
   //Adding the opened photos into a new array
 
   const updatePhoto = (photosID) => {
     const updatesPhotos = _photos;
     const foundPhoto = updatesPhotos.find((photo) => photo.id === photosID);
     foundPhoto.click = true;
-    //updatesPhotos[foundPhoto].click = false;
+
+    let openedCards = updatesPhotos.filter((img) => img.click === true);
+    if (openedCards.length === 2) {
+      if (openedCards[0].image === openedCards[1].image) {
+        console.log("YESSSS"); //to check if it's working
+      } else {
+        console.log("NOOOOO");
+        foundPhoto.click = false;
+        const foundPhoto2 = updatesPhotos.find((photo) => photo.click);
+        openedCards = [];
+        foundPhoto2.click = false;
+        console.log(updatesPhotos);
+      }
+    }
+
     setPhotos(updatesPhotos);
-    console.log(foundPhoto);
-    console.log(_photos);
+
+    // const handleFlipped = (id) => {
+    //   setDisabled(true);
+    //   setFlipped([...flipped, id]);
+    //   if (flipped.length === 0) {
+    //     setFlipped([id]);
+    //     setDisabled(false);
+    //   } else {
+    //     if (samePhotoClicked(id)) return setFlipped([flipped[0], id]);
+    //   }
+    // };
+    // const samePhotoClicked = (id) => flipped.includes(id);
+
+    // const newArray = [];
+    // newArray.push(updatesPhotos);
+    // if (newArray.length == 2) {
+    //   const result = updatesPhotos.filter((img) => img === updatesPhotos.image);
+    // } else updatePhoto(photosID);
   };
 
   //   const match = (photoarray) => {

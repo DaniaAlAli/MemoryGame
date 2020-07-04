@@ -6,10 +6,11 @@ import { PhotoWrapper } from "../styles";
 const PhotoItem = (props) => {
   const photos = props.photos;
 
-  const [currentPhoto, setCurrentPhoto] = useState(photos.image);
+  const [curentPhoto, setCurrentPhoto] = useState(photos.image);
 
   const handleFlip = () => {
-    if (currentPhoto === photos.image) setCurrentPhoto(photos.back);
+    props.updatePhoto(photos.id);
+    setCurrentPhoto(!photos.click);
   };
 
   return (
@@ -17,7 +18,11 @@ const PhotoItem = (props) => {
       {" "}
       <img
         onClick={handleFlip}
-        src={currentPhoto === photos.back ? photos.image : photos.back}
+        src={
+          photos.click
+            ? photos.image
+            : "https://www.stars-music.com/medias/serato/vinyl-control-tone-black-12-la-paire-hd-2-57987.png"
+        }
       />{" "}
     </PhotoWrapper>
   );
