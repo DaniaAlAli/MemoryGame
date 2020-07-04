@@ -17,6 +17,7 @@ const PhotoItem = (props) => {
     <PhotoWrapper className="col-lg-2">
       {" "}
       <img
+        alt={""}
         onClick={handleFlip}
         src={
           photos.click
