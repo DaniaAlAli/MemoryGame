@@ -38,24 +38,29 @@ const PhotoList = () => {
     const foundPhoto = _photos.find((photo) => photo.id === photosID);
     foundPhoto.click = !foundPhoto.click;
     console.log(_photos);
+
     let openedCards = _photos.filter((img) => img.click === true);
-    if (openedCards.length === 2) {
-      if (openedCards[0].image === openedCards[1].image) {
+
+    if (openedCards.length % 2 === 0) {
+      if (
+        openedCards[openedCards.length - 1].image ===
+        openedCards[openedCards.length - 2].image
+      ) {
         console.log("YESSSS"); //to check if it's working
-        openedCards = [];
       } else {
         console.log("NOOOOO");
         const foundPhoto2 = _photos.find((photo) => photo.click);
+        openedCards = [];
 
         setTimeout(function () {
-          openedCards = [];
-          foundPhoto.click = false;
           foundPhoto2.click = false;
+          foundPhoto.click = false;
           console.log(_photos);
           console.log(openedCards);
         }, 1300);
       }
     }
+    setPhotos(_photos);
   };
 
   const photoList = _photos.map((photos) => (

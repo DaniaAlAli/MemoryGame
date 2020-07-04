@@ -9,8 +9,10 @@ const PhotoItem = (props) => {
   const [curentPhoto, setCurrentPhoto] = useState(photos.image);
 
   const handleFlip = () => {
-    props.updatePhoto(photos.id);
-    setCurrentPhoto(!photos.click);
+    if (!photos.click) {
+      props.updatePhoto(photos.id);
+      setCurrentPhoto(photos.click);
+    }
   };
 
   return (
