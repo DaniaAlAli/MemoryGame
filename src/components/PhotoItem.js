@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 //Style
 import { PhotoWrapper } from "../styles";
@@ -6,12 +6,9 @@ import { PhotoWrapper } from "../styles";
 const PhotoItem = (props) => {
   const photos = props.photos;
 
-  const [curentPhoto, setCurrentPhoto] = useState(photos.image);
-
   const handleFlip = () => {
     if (!photos.click) {
       props.updatePhoto(photos.id);
-      setCurrentPhoto(photos.click);
     }
   };
 
